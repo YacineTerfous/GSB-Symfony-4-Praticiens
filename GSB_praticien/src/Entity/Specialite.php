@@ -26,6 +26,11 @@ class Specialite
      */
     private $Spe_libelle;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Posseder", inversedBy="specialites")
+     */
+    private $posseder;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class Specialite
     public function setSpeLibelle(string $Spe_libelle): self
     {
         $this->Spe_libelle = $Spe_libelle;
+
+        return $this;
+    }
+
+    public function getPosseder(): ?Posseder
+    {
+        return $this->posseder;
+    }
+
+    public function setPosseder(?Posseder $posseder): self
+    {
+        $this->posseder = $posseder;
 
         return $this;
     }

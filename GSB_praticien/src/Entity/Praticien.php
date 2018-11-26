@@ -17,6 +17,11 @@ class Praticien
     private $id;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $Pra_num;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $Pra_nom;
@@ -45,6 +50,11 @@ class Praticien
      * @ORM\ManyToOne(targetEntity="App\Entity\TypePraticient", inversedBy="praticiens")
      */
     private $Type_code;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Posseder", inversedBy="praticiens")
+     */
+    private $posseder;
 
     public function getId(): ?int
     {
@@ -119,6 +129,18 @@ class Praticien
     public function setTypeCode(?TypePraticient $Type_code): self
     {
         $this->Type_code = $Type_code;
+
+        return $this;
+    }
+
+    public function getPosseder(): ?Posseder
+    {
+        return $this->posseder;
+    }
+
+    public function setPosseder(?Posseder $posseder): self
+    {
+        $this->posseder = $posseder;
 
         return $this;
     }
