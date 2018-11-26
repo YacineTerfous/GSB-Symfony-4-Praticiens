@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,9 +29,14 @@ class Specialite
     private $Spe_libelle;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Posseder", inversedBy="specialites")
+     * @ORM\OneToMany(targetEntity="App\Entity\Posseder", mappedBy="specialite")
      */
-    private $posseder;
+    private $posseders;
+
+    public function __construct()
+    {
+        $this->posseders = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,6 +75,37 @@ class Specialite
     public function setPosseder(?Posseder $posseder): self
     {
         $this->posseder = $posseder;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Posseder[]
+     */
+    public function getPosseders(): Collection
+    {
+        return $this->posseders;
+    }
+
+    public function addPosseder(Posseder $posseder): self
+    {
+        if (!$this->posseders->contains($posseder)) {
+            $this->posseders[] = $posseder;
+            $posseder->setSpecialite($this);
+        }
+
+        return $this;
+    }
+
+    public function removePosseder(Posseder $posseder): self
+    {
+        if ($this->posseders->contains($posseder)) {
+            $this->posseders->removeElement($posseder);
+            // set the owning side to null (unless already changed)
+            if ($posseder->getSpecialite() === $this) {
+                $posseder->setSpecialite(null);
+            }
+        }
 
         return $this;
     }

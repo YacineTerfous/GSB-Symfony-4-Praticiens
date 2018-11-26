@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,9 +54,15 @@ class Praticien
     private $Type_code;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Posseder", inversedBy="praticiens")
+     * @ORM\OneToMany(targetEntity="App\Entity\Posseder", mappedBy="praticiens")
      */
-    private $posseder;
+    private $specialite;
+
+    public function __construct()
+    {
+        $this->specialite = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -141,6 +149,37 @@ class Praticien
     public function setPosseder(?Posseder $posseder): self
     {
         $this->posseder = $posseder;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Posseder[]
+     */
+    public function getSpecialite(): Collection
+    {
+        return $this->specialite;
+    }
+
+    public function addSpecialite(Posseder $specialite): self
+    {
+        if (!$this->specialite->contains($specialite)) {
+            $this->specialite[] = $specialite;
+            $specialite->setPraticiens($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpecialite(Posseder $specialite): self
+    {
+        if ($this->specialite->contains($specialite)) {
+            $this->specialite->removeElement($specialite);
+            // set the owning side to null (unless already changed)
+            if ($specialite->getPraticiens() === $this) {
+                $specialite->setPraticiens(null);
+            }
+        }
 
         return $this;
     }

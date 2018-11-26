@@ -24,14 +24,14 @@ class Posseder
     private $Pos_diplome;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Praticien", mappedBy="posseder")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Praticien", inversedBy="specialite")
      */
     private $praticiens;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Specialite", mappedBy="posseder")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Specialite", inversedBy="posseders")
      */
-    private $specialites;
+    private $specialite;
 
     public function __construct()
     {
@@ -87,33 +87,22 @@ class Posseder
         return $this;
     }
 
-    /**
-     * @return Collection|Specialite[]
-     */
-    public function getSpecialites(): Collection
-    {
-        return $this->specialites;
-    }
 
-    public function addSpecialite(Specialite $specialite): self
+    public function setPraticiens(?Praticien $praticiens): self
     {
-        if (!$this->specialites->contains($specialite)) {
-            $this->specialites[] = $specialite;
-            $specialite->setPosseder($this);
-        }
+        $this->praticiens = $praticiens;
 
         return $this;
     }
 
-    public function removeSpecialite(Specialite $specialite): self
+    public function getSpecialite(): ?Specialite
     {
-        if ($this->specialites->contains($specialite)) {
-            $this->specialites->removeElement($specialite);
-            // set the owning side to null (unless already changed)
-            if ($specialite->getPosseder() === $this) {
-                $specialite->setPosseder(null);
-            }
-        }
+        return $this->specialite;
+    }
+
+    public function setSpecialite(?Specialite $specialite): self
+    {
+        $this->specialite = $specialite;
 
         return $this;
     }
