@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste praticiens{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Liste des praticiens</h1>
+    <div class="row">
+        {% for praticien in Praticiens %}
+            <div class="col-md-4">
+                <div class "card md-4 shadow-sm">
+                    <img class="card-tmg-top" src="{{praticien.avatar}}" alt="Image de l'avatar {{praticien.praticien}}">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <h4>{{praticien.id}}</h4>
+                            <h4>{{praticien.num}}</h4>
+                            <h4>{{praticien.nom}}</h4>
+                            <h4>{{praticien.adresse}}</h4>
+                            <h4>{{praticien.codepostal}}</h4>
+                            <h4>{{praticien.ville}}</h4>
+                            <p>{{praticien.coefnotoriete}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
