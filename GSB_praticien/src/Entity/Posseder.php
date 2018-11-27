@@ -8,6 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PossederRepository")
+ * @ORM\Table(uniqueConstraints={
+        * @ORM\UniqueConstraint(name="posseder_unique", columns={"praticiens_id", "specialite_id"})
+        * })
  */
 class Posseder
 {
