@@ -9,7 +9,19 @@
     </head>
     <body>
         <nav>
-            
+        {# gestion des messafes flash #}
+        {% for label, messages in app.flashes %}    
+            {# on parcours chaque type d'image grace au label #}
+            <div class="container">
+                <div class="alert alert-{{ label }}">
+                    {% for message in messages %}
+                        {# on parcours chaque message pour le label en cours de lecture #}
+                        <p>{{ message | raw }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+                    }
         </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
