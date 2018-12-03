@@ -58,6 +58,11 @@ class Praticien
      */
     private $specialite;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $avatar;
+
     public function __construct()
     {
         $this->specialite = new ArrayCollection();
@@ -180,6 +185,18 @@ class Praticien
                 $specialite->setPraticiens(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
