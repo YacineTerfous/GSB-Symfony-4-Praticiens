@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PraticienRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\praticienRepository")
  */
-class Praticien
+class praticien
 {
     /**
      * @ORM\Id()
@@ -21,35 +21,35 @@ class Praticien
     /**
      * @ORM\Column(type="integer")
      */
-    private $Pra_num;
+    private $pra_num;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Pra_nom;
+    private $pra_nom;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $Pra_adr;
+    private $pra_adr;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $Pra_CP;
+    private $pra_CP;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Pra_ville;
+    private $pra_ville;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      */
-    private $Pra_coefnotoriete;
+    private $pra_coefnotoriete;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypePraticient", inversedBy="praticiens")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Typepraticient", inversedBy="praticiens")
      */
     private $Type_code;
 
@@ -74,72 +74,72 @@ class Praticien
         return $this->id;
     }
 
-    public function getPraNom(): ?string
+    public function getpraNom(): ?string
     {
-        return $this->Pra_nom;
+        return $this->pra_nom;
     }
 
-    public function setPraNom(string $Pra_nom): self
+    public function setpraNom(string $pra_nom): self
     {
-        $this->Pra_nom = $Pra_nom;
+        $this->pra_nom = $pra_nom;
 
         return $this;
     }
 
-    public function getPraAdr(): ?string
+    public function getpraAdr(): ?string
     {
-        return $this->Pra_adr;
+        return $this->pra_adr;
     }
 
-    public function setPraAdr(?string $Pra_adr): self
+    public function setpraAdr(?string $pra_adr): self
     {
-        $this->Pra_adr = $Pra_adr;
+        $this->pra_adr = $pra_adr;
 
         return $this;
     }
 
-    public function getPraCP(): ?int
+    public function getpraCP(): ?int
     {
-        return $this->Pra_CP;
+        return $this->pra_CP;
     }
 
-    public function setPraCP(?int $Pra_CP): self
+    public function setpraCP(?int $pra_CP): self
     {
-        $this->Pra_CP = $Pra_CP;
+        $this->pra_CP = $pra_CP;
 
         return $this;
     }
 
-    public function getPraVille(): ?string
+    public function getpraVille(): ?string
     {
-        return $this->Pra_ville;
+        return $this->pra_ville;
     }
 
-    public function setPraVille(?string $Pra_ville): self
+    public function setpraVille(?string $pra_ville): self
     {
-        $this->Pra_ville = $Pra_ville;
+        $this->pra_ville = $pra_ville;
 
         return $this;
     }
 
-    public function getPraCoefnotoriete(): ?float
+    public function getpraCoefnotoriete(): ?float
     {
-        return $this->Pra_coefnotoriete;
+        return $this->pra_coefnotoriete;
     }
 
-    public function setPraCoefnotoriete(?float $Pra_coefnotoriete): self
+    public function setpraCoefnotoriete(?float $pra_coefnotoriete): self
     {
-        $this->Pra_coefnotoriete = $Pra_coefnotoriete;
+        $this->pra_coefnotoriete = $pra_coefnotoriete;
 
         return $this;
     }
 
-    public function getTypeCode(): ?TypePraticient
+    public function getTypeCode(): ?Typepraticient
     {
         return $this->Type_code;
     }
 
-    public function setTypeCode(?TypePraticient $Type_code): self
+    public function setTypeCode(?Typepraticient $Type_code): self
     {
         $this->Type_code = $Type_code;
 
@@ -170,7 +170,7 @@ class Praticien
     {
         if (!$this->specialite->contains($specialite)) {
             $this->specialite[] = $specialite;
-            $specialite->setPraticiens($this);
+            $specialite->setpraticiens($this);
         }
 
         return $this;
@@ -181,8 +181,8 @@ class Praticien
         if ($this->specialite->contains($specialite)) {
             $this->specialite->removeElement($specialite);
             // set the owning side to null (unless already changed)
-            if ($specialite->getPraticiens() === $this) {
-                $specialite->setPraticiens(null);
+            if ($specialite->getpraticiens() === $this) {
+                $specialite->setpraticiens(null);
             }
         }
 
