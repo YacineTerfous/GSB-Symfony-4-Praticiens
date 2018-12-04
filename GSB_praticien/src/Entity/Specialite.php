@@ -33,9 +33,15 @@ class Specialite
      */
     private $posseders;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Posseder", mappedBy="specialite", orphanRemoval=true)
+     */
+    private $posseder2;
+
     public function __construct()
     {
         $this->posseders = new ArrayCollection();
+        $this->posseder2 = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -104,6 +110,37 @@ class Specialite
             // set the owning side to null (unless already changed)
             if ($posseder->getspecialite() === $this) {
                 $posseder->setspecialite(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Posseder[]
+     */
+    public function getPosseder2(): Collection
+    {
+        return $this->posseder2;
+    }
+
+    public function addPosseder2(Posseder $posseder2): self
+    {
+        if (!$this->posseder2->contains($posseder2)) {
+            $this->posseder2[] = $posseder2;
+            $posseder2->setSpecialite($this);
+        }
+
+        return $this;
+    }
+
+    public function removePosseder2(Posseder $posseder2): self
+    {
+        if ($this->posseder2->contains($posseder2)) {
+            $this->posseder2->removeElement($posseder2);
+            // set the owning side to null (unless already changed)
+            if ($posseder2->getSpecialite() === $this) {
+                $posseder2->setSpecialite(null);
             }
         }
 
