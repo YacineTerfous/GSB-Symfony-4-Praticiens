@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Praticien;
 use App\Repository\PraticienRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PraticienController extends AbstractController
 {
