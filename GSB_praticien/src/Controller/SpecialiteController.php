@@ -2,26 +2,19 @@
 
 namespace App\Controller;
 
-use App\Repository\SpecialiteRepository;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 class SpecialiteController extends AbstractController
 {
     /**
      * @Route("/specialite", name="specialite")
      */
-    public function index(SpecialiteRepository $repo)
+    public function FindAll()
     {
-        $specialites = $repo->findAll();
-
         return $this->render('specialite/index.html.twig', [
             'controller_name' => 'SpecialiteController',
-            'specialites' => $specialites
+            'spécialites'=> $specialites
         ]);
     }
-
-
-
-
 }
