@@ -64,9 +64,9 @@ class Praticien
     }
 
 
-    public function getId(): ?int
+    public function getpraNum(): ?int
     {
-        return $this->id;
+        return $this->pra_num;
     }
 
     public function getpraNom(): ?string
