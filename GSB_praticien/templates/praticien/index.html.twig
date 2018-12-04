@@ -1,20 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block title %}Liste praticiens{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container">
+    <h1>Liste des praticiens</h1>
+    <div class="row">
+        {% for praticien in praticiens %}
+            <div class="col-md-4">
+                <div class "card md-4 shadow-sm">
+                    <img class="card-tmg-top" src="{{praticien.avatar}}" alt="Image de l'avatar {{praticien.praticien}}">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <h4>{{praticien.pra_id}}</h4>
+                            <h4>{{praticien.pra_num}}</h4>
+                            <h4>{{praticien.pra_nom}}</h4>
+                            <h4>{{praticien.pra_adresse}}</h4>
+                            <h4>{{praticien.pra_codepostal}}</h4>
+                            <h4>{{praticien.pra_ville}}</h4>
+                            <p>{{praticien.pra_coefnotoriete}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/PraticienController.php'|file_link(0) }}">src/Controller/PraticienController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/praticien/index.html.twig'|file_link(0) }}">templates/praticien/index.html.twig</a></code></li>
-    </ul>
-</div>
+        </div>
+    </div>
+
 {% endblock %}

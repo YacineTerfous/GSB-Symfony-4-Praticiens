@@ -17,8 +17,8 @@ class PraticienController extends AbstractController
         //recherche de toute les praticiens
         $praticiens=$repo->findAll();
 
-        return $this->render('praticien/praticien.html.twig', [
-            'controller_name' => 'PraticienController',
+        return $this->render('praticien/index.html.twig', [
+            'Praticiens'=>$praticiens
         ]);
     }
 }

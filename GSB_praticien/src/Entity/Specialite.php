@@ -21,12 +21,12 @@ class Specialite
     /**
      * @ORM\Column(type="integer")
      */
-    private $Spe_code;
+    private $spe_code;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Spe_libelle;
+    private $spe_libelle;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Posseder", mappedBy="specialite")
@@ -43,26 +43,26 @@ class Specialite
         return $this->id;
     }
 
-    public function getSpeCode(): ?int
+    public function getspeCode(): ?int
     {
-        return $this->Spe_code;
+        return $this->spe_code;
     }
 
-    public function setSpeCode(int $Spe_code): self
+    public function setspeCode(int $spe_code): self
     {
-        $this->Spe_code = $Spe_code;
+        $this->spe_code = $spe_code;
 
         return $this;
     }
 
-    public function getSpeLibelle(): ?string
+    public function getspeLibelle(): ?string
     {
-        return $this->Spe_libelle;
+        return $this->spe_libelle;
     }
 
-    public function setSpeLibelle(string $Spe_libelle): self
+    public function setspeLibelle(string $spe_libelle): self
     {
-        $this->Spe_libelle = $Spe_libelle;
+        $this->spe_libelle = $spe_libelle;
 
         return $this;
     }
@@ -91,7 +91,7 @@ class Specialite
     {
         if (!$this->posseders->contains($posseder)) {
             $this->posseders[] = $posseder;
-            $posseder->setSpecialite($this);
+            $posseder->setspecialite($this);
         }
 
         return $this;
@@ -102,8 +102,8 @@ class Specialite
         if ($this->posseders->contains($posseder)) {
             $this->posseders->removeElement($posseder);
             // set the owning side to null (unless already changed)
-            if ($posseder->getSpecialite() === $this) {
-                $posseder->setSpecialite(null);
+            if ($posseder->getspecialite() === $this) {
+                $posseder->setspecialite(null);
             }
         }
 

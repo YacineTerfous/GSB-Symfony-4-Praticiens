@@ -12,59 +12,59 @@ class PraticienType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Pra_num',IntegerType::class,[
+            ->add('pra_num',IntegerType::class,[
                 'label' => "num",
                 'attr'  =>[
-                    'placeholder'=>"Saisir le numero du Praticien"
+                    'placeholder'=>"Saisir le numero du praticien"
                 ]
             ])
 
-            ->add('Pra_nom',IntegerType::class,[
+            ->add('pra_nom',IntegerType::class,[
                 'label' => "nom",
                 'attr'  =>[
-                    'placeholder'=>"Saisir le nom du Praticien"
+                    'placeholder'=>"Saisir le nom du praticien"
                 ]
             ])
 
-            ->add('Pra_adr',IntegerType::class,[
+            ->add('pra_adr',IntegerType::class,[
                 'label' => "adresse",
                 'attr'  =>[
-                    'placeholder'=>"Saisir l'adresse du Praticien"
+                    'placeholder'=>"Saisir l'adresse du praticien"
                 ]
             ])
 
-            ->add('Pra_CP',IntegerType::class,[
+            ->add('pra_CP',IntegerType::class,[
                 'label' => "CodePostal",
                 'attr'  =>[
-                    'placeholder'=>"Saisir le code postal du Praticien"
+                    'placeholder'=>"Saisir le code postal du praticien"
                 ]
             ])
 
-            ->add('Pra_ville',IntegerType::class,[
+            ->add('pra_ville',IntegerType::class,[
                 'label' => "ville",
                 'attr'  =>[
-                    'placeholder'=>"Saisir la ville du Praticien"
+                    'placeholder'=>"Saisir la ville du praticien"
                 ]
             ])
 
-            ->add('Pra_coefnotoriete',PercentType::class,[
+            ->add('pra_coefnotoriete',PercentType::class,[
                 'label' => "Coefficient",
                 'attr'  =>[
-                    'placeholder'=>"Saisir le coefficient du Praticien"
+                    'placeholder'=>"Saisir le coefficient du praticien"
                 ]
             ])
 
             ->add('avatar',UrlType::class,[
                 'label' => "avatar",
                 'attr'  =>[
-                    'placeholder'=>"Inserez l'avatar du Praticien"
+                    'placeholder'=>"Inserez l'avatar du praticien"
                 ]
             ])
 
             ->add('Type_code',IntegerType::class,[
                 'label' => "code",
                 'attr'  =>[
-                    'placeholder'=>"Saisir le code du Praticien"
+                    'placeholder'=>"Saisir le code du praticien"
                 ]
             ])
         ;
@@ -73,7 +73,7 @@ class PraticienType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Praticien::class,
+            'data_class' => praticien::class,
         ]);
     }
 }
