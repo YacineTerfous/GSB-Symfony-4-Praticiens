@@ -7,13 +7,18 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PraticienRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\praticienRepository")
  */
-class Praticien
+class praticien
 {
     /**     
      * @ORM\Id()
      * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $pra_num;
@@ -44,7 +49,7 @@ class Praticien
     private $pra_coefnotoriete;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypePraticient", inversedBy="praticiens")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Typepraticient", inversedBy="praticiens")
      */
     private $Type_code;
 
@@ -61,6 +66,12 @@ class Praticien
     public function __construct()
     {
         $this->specialite = new ArrayCollection();
+    }
+
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getpraNom(): ?string
