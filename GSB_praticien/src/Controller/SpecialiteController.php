@@ -17,7 +17,7 @@ class SpecialiteController extends AbstractController
 
         return $this->render('specialite/index.html.twig', [
             'controller_name' => 'SpecialiteController',
-            'spécialites'=> $specialites
+            'specialites'=> $specialites
         ]);
     }
 }

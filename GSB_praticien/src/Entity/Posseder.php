@@ -19,7 +19,7 @@ class Posseder
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private $praticiens_num;
 
     /**
      * @ORM\Column(type="date")

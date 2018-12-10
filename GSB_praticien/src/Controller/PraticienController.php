@@ -18,7 +18,7 @@ class PraticienController extends AbstractController
         $praticiens=$repo->findAll();
 
         return $this->render('praticien/index.html.twig', [
-            'Praticiens'=>$praticiens
+            'praticiens'=>$praticiens
         ]);
     }
 }
